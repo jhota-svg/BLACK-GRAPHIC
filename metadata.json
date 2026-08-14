@@ -1,0 +1,6 @@
+{
+  "name": "Black Graphic - Printing & Design Studio",
+  "description": "Automated quotations, pre-press file validator, real-time order tracking with live workshop photos, and Gemini AI assistant for Black Graphic in Piura, Peru.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
