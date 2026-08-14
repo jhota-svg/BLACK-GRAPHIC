@@ -36,7 +36,7 @@ export default function App() {
   }, [darkMode]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#030617] text-slate-900 dark:text-slate-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#FFCC00] selection:text-black">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden flex flex-col bg-slate-50 dark:bg-[#030617] text-slate-900 dark:text-slate-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#FFCC00] selection:text-black">
       
       {/* Navigation Header */}
       <Navbar
@@ -47,7 +47,7 @@ export default function App() {
       />
 
       {/* Main App Body */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 lg:px-8 py-4 sm:py-8 overflow-x-hidden">
         {activeTab === "quoter" && (
           <QuoterTab
             activeQuote={activeQuote}
