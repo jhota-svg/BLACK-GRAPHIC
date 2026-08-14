@@ -608,21 +608,22 @@ Hola equipo de Black Graphic, envío mi cotización ${activeValidation ? "y la v
                       </div>
                     </button>
 
-                    {/* Question mark (?) help button on the top right corner */}
+                    {/* Clear "Ejemplos" visual guide button on the top right corner */}
                     <button
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         setHelpModalProduct(prod.id);
                       }}
-                      title={`Ver guía visual y ejemplos de ${prod.name}`}
-                      className={`absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center font-black text-[11px] shadow-sm transition-all z-10 cursor-pointer ${
+                      title={`Ver ejemplos y muestras visuales de ${prod.name}`}
+                      className={`absolute top-2 right-2 px-2 py-1 rounded-lg flex items-center space-x-1 font-bold text-[10px] shadow-xs transition-all z-10 cursor-pointer ${
                         isSelected
                           ? "bg-white/20 hover:bg-white text-white hover:text-slate-900 dark:bg-black/20 dark:hover:bg-black dark:text-black dark:hover:text-[#FFCC00]"
-                          : "bg-slate-200/90 hover:bg-[#d5118d] text-slate-700 hover:text-white dark:bg-slate-800 dark:hover:bg-[#d5118d] dark:text-slate-300 dark:hover:text-white border border-slate-300 dark:border-slate-700"
+                          : "bg-slate-100 hover:bg-[#000273] text-slate-700 hover:text-white dark:bg-slate-800 dark:hover:bg-[#FFCC00] dark:text-slate-300 dark:hover:text-slate-950 border border-slate-200 dark:border-slate-700"
                       }`}
                     >
-                      <i className="fa-solid fa-question text-[10px]" />
+                      <i className="fa-solid fa-images text-[9px]" />
+                      <span className="leading-none">Ejemplos</span>
                     </button>
                   </div>
                 );
@@ -1866,20 +1867,32 @@ Hola equipo de Black Graphic, envío mi cotización ${activeValidation ? "y la v
                     </div>
                   </div>
 
-                  <div className="pt-2 border-t border-slate-200/60 dark:border-slate-700/50 flex items-center justify-between gap-2">
-                    <span className="text-[11px] font-bold text-slate-400">
-                      Tarifa desde: <strong className="text-slate-900 dark:text-white font-extrabold">S/. {prod.basePrice.toFixed(2)}</strong>
+                  <div className="pt-2.5 border-t border-slate-200/60 dark:border-slate-700/50 flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                      Desde: <strong className="text-slate-900 dark:text-white font-extrabold">S/. {prod.basePrice.toFixed(2)}</strong> /{prod.unitLabel}
                     </span>
-                    <button
-                      onClick={() => {
-                        setSelectedProduct(prod.id);
-                        setShowCatalogModal(false);
-                      }}
-                      className="px-3 py-1.5 rounded-xl bg-[#000273] hover:bg-[#000273]/90 text-white dark:bg-[#FFCC00] dark:hover:bg-[#FFCC00]/90 dark:text-slate-950 font-black text-xs transition-all cursor-pointer shadow-xs active:scale-95 flex items-center space-x-1"
-                    >
-                      <span>Cotizar</span>
-                      <i className="fa-solid fa-arrow-right text-[10px]" />
-                    </button>
+                    <div className="flex items-center space-x-1.5">
+                      <button
+                        type="button"
+                        onClick={() => setHelpModalProduct(prod.id)}
+                        className="px-2.5 py-1.5 rounded-xl bg-slate-200/80 hover:bg-slate-300 dark:bg-slate-700/80 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-extrabold text-xs transition-all cursor-pointer shadow-xs active:scale-95 flex items-center space-x-1.5"
+                        title={`Ver muestras y fotos reales de ${prod.name}`}
+                      >
+                        <i className="fa-solid fa-images text-[11px] text-[#000273] dark:text-[#FFCC00]" />
+                        <span>Ver Ejemplos</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedProduct(prod.id);
+                          setShowCatalogModal(false);
+                        }}
+                        className="px-3 py-1.5 rounded-xl bg-[#000273] hover:bg-[#000273]/90 text-white dark:bg-[#FFCC00] dark:hover:bg-[#FFCC00]/90 dark:text-slate-950 font-black text-xs transition-all cursor-pointer shadow-xs active:scale-95 flex items-center space-x-1"
+                      >
+                        <span>Cotizar</span>
+                        <i className="fa-solid fa-arrow-right text-[10px]" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -1905,11 +1918,11 @@ Hola equipo de Black Graphic, envío mi cotización ${activeValidation ? "y la v
         </div>
       )}
 
-      {/* Visual Guide / Help (?) Modal */}
+      {/* Visual Guide / Help Examples Modal */}
       {helpModalProduct && (
         <div
           onClick={() => setHelpModalProduct(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fade-in cursor-pointer"
+          className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm animate-fade-in cursor-pointer"
         >
           <div
             onClick={(e) => e.stopPropagation()}
